@@ -20,6 +20,13 @@ resource "aws_internet_gateway" "app" {
   }
 }
 
+module "view" {
+  source =  "./modules/view_tier"
+  name = "Els-web"
+  src_directory="presentation/build/static"
+  app_ip="${module.app.app_instance}"
+}
+
 module "app" {
   source = "./modules/app_tier"
   vpc_id = "${aws_vpc.app.id}"

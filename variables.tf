@@ -7,7 +7,7 @@ variable "db_ami_id" {
 }
 
 variable "app_ami_id" {
-  default="ami-0f5ffd8976c76cf27"
+  default="ami-00d3f395592364c0e"
 }
 
 variable "cidr_block" {
