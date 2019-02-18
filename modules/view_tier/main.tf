@@ -36,8 +36,8 @@ resource "null_resource" "s3_file_uploader" {
   provisioner "local-exec" {
     command = <<EOF
     cd presentation/ReactSampleApp
-    npm install
-    export APP_HOST="http://${var.app_ip}/posts"
+    echo "APP_HOST=http://${var.app_ip}/posts" > src/.env
+    npm i
     npm run build
     npm run deploy
 EOF

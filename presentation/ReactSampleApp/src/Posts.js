@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import logo from './logo.png';
 import Post from './Post';
+import dotenv from 'dotenv';
+
 
 class Posts extends Component {
 
   constructor() {
     super();
+    dotenv.config()
     this.state = {
       posts: []
     }
@@ -26,7 +29,7 @@ class Posts extends Component {
 
   componentDidMount() {
     // fetch("http://3.8.118.110/posts").then(results => {
-    fetch(process.env.APP_HOST).then(results => {
+    fetch(process.env.APP_HOST),  { mode: 'no-cors' }.then(results => {
       return results.json();
     }).then(data => {
       this.setState(data);
