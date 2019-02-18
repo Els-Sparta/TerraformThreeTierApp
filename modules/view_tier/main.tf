@@ -36,7 +36,7 @@ resource "null_resource" "s3_file_uploader" {
   provisioner "local-exec" {
     command = <<EOF
     cd presentation/ReactSampleApp
-    echo "APP_HOST=http://${var.app_ip}/posts" > src/.env
+    echo "REACT_APP_HOST=http://${var.app_ip}/posts" > .env
     npm i
     npm run build
     npm run deploy
@@ -44,3 +44,14 @@ EOF
   }
   depends_on = ["aws_s3_bucket.react_bucket"]
 }
+
+# resource "null_resource" "s3_deploy" {
+#   provisioner "local_exec" {
+#     command = <<EOF
+#     cd presentation/ReactSampleApp
+#
+# EOF
+#   }
+#
+#   depends_on = ["aws_s3_bucket.react_bucket"]
+# }
